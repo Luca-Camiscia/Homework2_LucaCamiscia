@@ -25,6 +25,14 @@ public:
             throw invalid_argument("segundos must be between 0 and 60");
         }
     }
+    momento(unsigned new_hora = 0): 
+        hour(new_hora), minutes(0),secs(0), morning("a.m"){}
+    momento(unsigned new_hora = 0, unsigned new_mins = 0): 
+        hour(new_hora), minutes(new_mins),secs(0), morning("a.m"){}
+    momento(unsigned new_hora = 0, unsigned new_mins = 0, unsigned new_sec = 0): 
+        hour(new_hora), minutes(new_mins),secs(new_sec), morning("a.m"){}
+
+    
 
     string GetTime() {
         stringstream ss;
