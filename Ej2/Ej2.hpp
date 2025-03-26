@@ -11,18 +11,18 @@ unsigned gen_legajo();
 
 class Alumno {
 private:
-    std::string name;
+    string name;
     unsigned legajo;
 
 public:
-    Alumno(std::string new_name, unsigned new_legajo);
-    std::string get_name();
+    Alumno(string new_name, unsigned new_legajo);
+    string get_name();
     unsigned get_legajo();
 };
 
 class Curso {
 private:
-    std::vector<Alumno> listado;
+    vector<Alumno> listado;
 
 public:
     Curso();

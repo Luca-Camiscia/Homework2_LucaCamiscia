@@ -1,113 +1,81 @@
 #include "ej4.hpp"
 
-class CajadeAhorro{
-    
-    private:
+//clase abstracta
 
-    double balance;
-    public:
-    CajadeAhorro(double initial_balance): balance(initial_balance){
-        if (initial_balance < 0){
-            throw(invalid_argument("Balance inicial debe ser mayor a 0"));
-        }
+CuentaBase::CuentaBase(double initial_balance, string name) 
+    : balance(initial_balance), userId(name) {
+    if (initial_balance < 0) {
+        throw invalid_argument("El balance debe ser mayor a 0");
     }
+}
 
-    void retirar(double withdrawal){
-        if (withdrawal < 0){
-            throw (invalid_argument("No se puede retirar una cantidad negativa de dinero"));
-        }
-        if (withdrawal > balance){
-            throw (invalid_argument("No se puede retirar esa cantidad de dinero"));
-        }
-        else {
-            balance -= withdrawal;
-        }
-       }
-    void ingresar(double income){
-        if (income < 0){
-            throw (invalid_argument ("Income tiene que ser mayor a -"));
-        }
-        balance+=income;
+CajadeAhorro::CajadeAhorro(double initial_balance, string name) 
+    : CuentaBase(initial_balance, name), ask_count(0) {}
+
+void CajadeAhorro::mostrarinfo() {
+    if (ask_count == 2) {  // Corregido: usaba = (asignación) en lugar de == (comparación)
+        retirar(20);
+        ask_count = -1;
     }
-    void retirar(double withdrawal){
-        if (withdrawal < 0){
-            throw (invalid_argument("No se puede retirar una cantidad negativa de dinero"));
-        }
-        if (withdrawal > balance){
-            throw (invalid_argument("No se puede retirar esa cantidad de dinero"));
-        }
-        else {
-            balance -= withdrawal;
-        }
-       }
-};
-class Cuenta_corriente {
-private:
-    CajadeAhorro* savings; 
+    cout << "Nombre de usuario -> " << userId << endl;
+    cout << "Balance total -> " << balance << endl;
+    ask_count++;
+}
 
-public:
-    double balance;
-
-    Cuenta_corriente(double initial_balance, CajadeAhorro* associated_savings)
-        : balance(initial_balance), savings(associated_savings) {
-        if (initial_balance < 0) {
-            throw(invalid_argument("Balance inicial debe ser mayor a 0"));
-        }
+void CajadeAhorro::ingresar(double income) {
+    if (income < 0) {
+        throw invalid_argument("No se puede ingresar una cantidad negativa de dinero");
     }
+    balance += income;
+}
 
-    void ingresar(double income) {
-        if (income < 0) {
-            throw(invalid_argument("Income tiene que ser mayor a -"));
+void CajadeAhorro::retirar(double withdrawal) {
+    if (withdrawal < 0) {
+        throw invalid_argument("No se puede retirar una cantidad negativa de dinero");
+    }
+    if (withdrawal > balance) {
+        throw invalid_argument("No hay suficiente saldo en la caja de ahorros");
+    }
+    balance -= withdrawal;
+}
+
+
+CuentaCorriente::CuentaCorriente(double initial_balance, string name) 
+    : CuentaBase(initial_balance, name), caja(0, name) {}
+
+void CuentaCorriente::mostrarinfo() {
+    cout << "Nombre de usuario -> " << userId << endl;
+    cout << "Balance total -> " << balance << endl;
+}
+
+void CuentaCorriente::ingresar(double income) {
+    if (income < 0) {
+        throw invalid_argument("No se puede ingresar una cantidad negativa de dinero");
+    }
+    balance += income;
+}
+
+void CuentaCorriente::ingresar_a_caja(double income) {
+    caja.ingresar(income);
+}
+
+void CuentaCorriente::retirar(double withdrawal) {
+    if (withdrawal < 0) {
+        throw invalid_argument("No se puede retirar una cantidad negativa de dinero");
+    }
+    if (withdrawal > balance) {
+        double remaining_with = withdrawal - balance;
+        try {
+            caja.retirar(remaining_with);
+        } catch (const invalid_argument& e) {
+            cout << "Saldo insuficiente" << endl;
         }
-        balance += income;
+        balance = 0;
+        return;
     }
+    balance -= withdrawal;
+}
 
-    void retirar(double withdrawal) {
-        if (withdrawal < 0) {
-            throw(invalid_argument("No se puede retirar una cantidad negativa de dinero"));
-        }
-        if (withdrawal > balance) {
-            // Intento sacar el dinero de la caja de ahorros
-            double remaining_withdrawal = withdrawal - balance;
-            if (savings != nullptr) {
-                try {
-                    savings->retirar(remaining_withdrawal);
-                    balance = 0; // Lo dejo en 0
-                } catch (const invalid_argument& e) {
-                    throw(invalid_argument("No se puede retirar esa cantidad de dinero ni de la caja de ahorros"));
-                }
-            } else {
-                throw(invalid_argument("No se puede retirar esa cantidad de dinero"));
-            }
-        } else {
-            balance -= withdrawal;
-        }
-    }
-};
-class Cuenta {
-
-    protected:
-    string user_name;
-    private:
-    Cuenta_corriente curr_account;
-    CajadeAhorro savings;
-    double balance;
-    void mostrar_info(){
-        cout << "Nombre de usuario -> " << user_name << endl;
-        cout << "Balance -> " << balance << endl;
-    }
-
-    public:
-    Cuenta(string name, double inicial_balance)
-        : user_name(name), balance(inicial_balance), savings(CajadeAhorro(0)), curr_account(Cuenta_corriente(0, &savings)) {}
-
-    void depositar(double income){
-        balance += income;
-    }
-    void retirar(double income){
-        balance -= income;
-    }
-
-
-
-};
+void CuentaCorriente::illegal_mostrar() {
+    mostrarinfo();
+}
