@@ -61,11 +61,11 @@ catch(invalid_argument){
     cout << "Los datos no son correctos\nDesea volver a intentar? (Ingrese YES o NO)" << endl;
     string salir;
     cin >> salir;
-    if (salir == "YES"){
+    if (salir == "YES" || salir == "yes" || salir == "Yes"){
         asking = true;
         cout << "Ingrese nuevamente los datos" << endl;
-
     }
+
     else{
         correct_input = false;
     }

@@ -4,6 +4,7 @@
 #include <ctime>
 #include <algorithm>
 #include <iomanip>
+#include <memory>
 using namespace std;
 #define MAX_CAPACITY 20
 
@@ -15,7 +16,6 @@ private:
     unsigned legajo;
     unsigned promedio;
     vector<string> cursos_terminados;
-    vector<unsigned> notas;
 
 public:
     Alumno(string new_name, unsigned new_legajo);
@@ -25,14 +25,15 @@ public:
 
 class Curso {
 private:
-    vector<Alumno> listado;
+    vector<shared_ptr<Alumno>> listado;
     bool legajo_exists(unsigned new_legajo);
 
 public:
     Curso();
-    void InscribirAlumno(Alumno new_alumno);
-    void DesinscribirAlumno(Alumno bad_alumno);
+    void InscribirAlumno(shared_ptr<Alumno> new_alumno);
+    void DesinscribirAlumno(shared_ptr<Alumno> bad_alumno);
     void alphabetical_print();
     void print_size();
-};
+    Curso Create_copy();
+};;
 

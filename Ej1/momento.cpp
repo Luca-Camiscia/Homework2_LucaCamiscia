@@ -1,5 +1,6 @@
 #include "Ej1.hpp"
 
+momento::momento() : hour(0), minutes(0), secs(0), morning("a.m"){}
 momento::momento(unsigned new_hora, unsigned new_minutos, unsigned new_segundos, string new_morning) 
     : hour(new_hora), minutes(new_minutos), secs(new_segundos), morning(new_morning) {
     if (morning != "a.m" && morning != "p.m") {
@@ -16,9 +17,20 @@ momento::momento(unsigned new_hora, unsigned new_minutos, unsigned new_segundos,
     }
 }
 
-momento::momento(unsigned new_hora) : hour(new_hora), minutes(0), secs(0), morning("a.m") {}
+momento::momento(unsigned new_hora) : hour(new_hora), minutes(0), secs(0), morning("a.m") {
+    if (hour > 12) {
+        throw invalid_argument("hora must be between 0 and 12");
+    }
+}
 
-momento::momento(unsigned new_hora, unsigned new_mins) : hour(new_hora), minutes(new_mins), secs(0), morning("a.m") {}
+momento::momento(unsigned new_hora, unsigned new_mins) : hour(new_hora), minutes(new_mins), secs(0), morning("a.m") {
+    if (hour > 12) {
+        throw invalid_argument("hora must be between 0 and 12");
+    }
+    if (minutes > 60) {
+        throw invalid_argument("minutos must be between 0 and 60");
+    }
+}
 
 momento::momento(unsigned new_hora, unsigned new_mins, unsigned new_sec) : hour(new_hora), minutes(new_mins), secs(new_sec), morning("a.m") {}
 

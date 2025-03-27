@@ -1,13 +1,13 @@
 #include "Ej2.hpp"
 int main (void){
 
-    Alumno alumno1 = Alumno("Anakin Skywalker", 1001);
-    Alumno alumno2 = Alumno("Han Solo", 1002);
-    Alumno alumno3 = Alumno("Leia Organa", 1003);
-    Alumno alumno5 = Alumno("Obi-Wan Kenobi", 1005);
-    Alumno alumno6 = Alumno("Padmé Amidala", 1006);
-    Alumno alumno7 = Alumno("Yoda", 1007);
-    Alumno alumno8 = Alumno("Mace Windu", 1008);
+    auto alumno1 = make_shared<Alumno>("Anakin Skywalker", 1001);
+    auto alumno2 = make_shared<Alumno>("Han Solo", 1002);
+    auto alumno3 = make_shared<Alumno>("Leia Organa", 1003);
+    auto alumno5 = make_shared<Alumno>("Obi-Wan Kenobi", 1005);
+    auto alumno6 = make_shared<Alumno>("Padmé Amidala", 1006);
+    auto alumno7 = make_shared<Alumno>("Yoda", 1007);
+    auto alumno8 = make_shared<Alumno>("Mace Windu", 1008);
 
     Curso Star_Wars = Curso();
     Star_Wars.InscribirAlumno(alumno1);
@@ -23,25 +23,24 @@ int main (void){
     Star_Wars.DesinscribirAlumno(alumno5); 
     Star_Wars.alphabetical_print();
 
-
     cout << "pruebo insertar un alumno que tenga un legajo repetido" << endl;
-    Alumno alumno9 = Alumno ("Darth Veide", 1001);
+    auto alumno9 = make_shared<Alumno>("Darth Veide", 1001);
     Star_Wars.InscribirAlumno(alumno9);
 
     //voy a llenar la clase para probar cuando esta llena 
-    Alumno alumno10 = Alumno("Qui-Gon Jinn", 1009);
-    Alumno alumno11 = Alumno("Lando Calrissian", 1010);
-    Alumno alumno12 = Alumno("Chewbacca", 1011);
-    Alumno alumno13 = Alumno("R2-D2", 1012);
-    Alumno alumno14 = Alumno("C-3PO", 1013);
-    Alumno alumno15 = Alumno("Boba Fett", 1014);
-    Alumno alumno16 = Alumno("Jango Fett", 1015);
-    Alumno alumno17 = Alumno("Palpatine", 1016);
-    Alumno alumno18 = Alumno("Rey", 1017);
-    Alumno alumno19 = Alumno("Finn", 1018);
-    Alumno alumno20 = Alumno("Poe Dameron", 1019);
-    Alumno alumno21 = Alumno("Kylo Ren", 1020);
-    Alumno alumno22 = Alumno("Ahsoka Tano", 1021);
+    auto alumno10 = make_shared<Alumno>("Qui-Gon Jinn", 1009);
+    auto alumno11 = make_shared<Alumno>("Lando Calrissian", 1010);
+    auto alumno12 = make_shared<Alumno>("Chewbacca", 1011);
+    auto alumno13 = make_shared<Alumno>("R2-D2", 1012);
+    auto alumno14 = make_shared<Alumno>("C-3PO", 1013);
+    auto alumno15 = make_shared<Alumno>("Boba Fett", 1014);
+    auto alumno16 = make_shared<Alumno>("Jango Fett", 1015);
+    auto alumno17 = make_shared<Alumno>("Palpatine", 1016);
+    auto alumno18 = make_shared<Alumno>("Jar Jar Bins", 1017);
+    auto alumno19 = make_shared<Alumno>("Finn", 1018);
+    auto alumno20 = make_shared<Alumno>("Poe Dameron", 1019);
+    auto alumno21 = make_shared<Alumno>("Kylo Ren", 1020);
+    auto alumno22 = make_shared<Alumno>("Ahsoka Tano", 1021);
     Star_Wars.InscribirAlumno(alumno3);
     Star_Wars.InscribirAlumno(alumno5);
     Star_Wars.InscribirAlumno(alumno10);
@@ -60,7 +59,7 @@ int main (void){
     Star_Wars.alphabetical_print();
     Star_Wars.print_size();
 
-    Alumno alumno23 = Alumno("Juan", 1022);
+    auto alumno23 = make_shared<Alumno>("Juan", 1022);
 
     Star_Wars.InscribirAlumno(alumno23);
 }

@@ -11,7 +11,8 @@ private:
     string morning;
 
 public:
-    momento(unsigned new_hora = 0, unsigned new_minutos = 0, unsigned new_segundos = 0, string new_morning = "a.m");
+    momento();
+    momento(unsigned new_hora, unsigned new_minutos, unsigned new_segundos, string new_morning);
     momento(unsigned new_hora);
     momento(unsigned new_hora, unsigned new_mins);
     momento(unsigned new_hora, unsigned new_mins, unsigned new_sec);
