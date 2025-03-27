@@ -48,7 +48,7 @@ void Curso::DesinscribirAlumno(Alumno bad_alumno) {
             return;
         }
     }
-    std::cout << "Error -> El alumno no se encuentra en el curso" << std::endl;
+    cout << "Error -> El alumno no se encuentra en el curso" << endl;
 }
 
 void Curso::alphabetical_print() {
@@ -56,15 +56,18 @@ void Curso::alphabetical_print() {
         return a.get_name() < b.get_name();
     });
 
-    cout << "=============================" << std::endl;
-    cout << "   Listado de Alumnos" << std::endl;
-    cout << "=============================" << std::endl;
-    cout << std::left << std::setw(20) << "Nombre" << "Legajo" << std::endl;
-    cout << "-----------------------------" << std::endl;
+    cout << "=============================" << endl;
+    cout << "   Listado de Alumnos" << endl;
+    cout << "=============================" << endl;
+    cout << left << setw(20) << "Nombre" << "Legajo" << endl;
+    cout << "-----------------------------" << endl;
 
     for (Alumno alumno : listado) {
-        cout << std::left << std::setw(20) << alumno.get_name() << alumno.get_legajo() << std::endl;
+        cout << left << setw(20) << alumno.get_name() << alumno.get_legajo() << endl;
     }
 
-    cout << "=============================" << std::endl;
+    cout << "=============================" << endl;
+}
+void Curso::print_size(){
+    cout << "La cantida de alumnos en la clase es -> " << listado.size() << endl;
 }

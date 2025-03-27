@@ -13,6 +13,9 @@ class Alumno {
 private:
     string name;
     unsigned legajo;
+    unsigned promedio;
+    vector<string> cursos_terminados;
+    vector<unsigned> notas;
 
 public:
     Alumno(string new_name, unsigned new_legajo);
@@ -23,12 +26,13 @@ public:
 class Curso {
 private:
     vector<Alumno> listado;
+    bool legajo_exists(unsigned new_legajo);
 
 public:
     Curso();
-    bool legajo_exists(unsigned new_legajo);
     void InscribirAlumno(Alumno new_alumno);
     void DesinscribirAlumno(Alumno bad_alumno);
     void alphabetical_print();
+    void print_size();
 };
 

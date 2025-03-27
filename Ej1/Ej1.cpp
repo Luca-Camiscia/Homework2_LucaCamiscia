@@ -34,7 +34,11 @@ cout << "Ejemplo ingresado por el usario: " << endl << "------------------------
 
 int hour, minutes, seconds;
 string morning;
-
+bool correct_input = false;
+bool asking = true;
+momento userMomento(0, 0, 0, "a.m"); //para que no explote
+while (asking){ 
+    asking = false;
 cout << "Ingrese la hora: ";
 cin >> hour;
 
@@ -47,8 +51,28 @@ cin >> seconds;
 cout << "Ingrese a.m o p.m: ";
 cin >> morning;
 
-momento userMomento = momento(hour, minutes, seconds, morning);
 
+
+try {
+    userMomento = momento(hour, minutes, seconds, morning); 
+    correct_input = true; 
+}
+catch(invalid_argument){
+    cout << "Los datos no son correctos\nDesea volver a intentar? (Ingrese YES o NO)" << endl;
+    string salir;
+    cin >> salir;
+    if (salir == "YES"){
+        asking = true;
+        cout << "Ingrese nuevamente los datos" << endl;
+
+    }
+    else{
+        correct_input = false;
+    }
+}
+}
+
+if (correct_input){ 
 cout << "Datos ingresados por el usuario:" << endl;
 cout << "Hora -> " << userMomento.GetHour() << endl;
 cout << "Minutos -> " << userMomento.GetMinutes() << endl;
@@ -58,5 +82,5 @@ cout << "Tiempo -> " << userMomento.GetMorning() << endl;
 cout << "Formato 24 hs:" << endl;
 userMomento.print_24hour();
 
-
+}
 }

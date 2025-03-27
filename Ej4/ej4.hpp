@@ -8,6 +8,7 @@ protected:
     double balance;
 
 private:
+
     virtual void mostrarinfo() = 0;
 
 public:
