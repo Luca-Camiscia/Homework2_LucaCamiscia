@@ -42,7 +42,7 @@ public:
 
     void ingresar_a_caja(double income);
     void retirar_de_caja(double income);
-    void mostrarinfo_caja();
+    void mostrarinfo_caja(); 
     void mostrarinfo() override;
 
     

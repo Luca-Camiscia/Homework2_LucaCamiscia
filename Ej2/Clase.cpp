@@ -1,19 +1,6 @@
 #include "Ej2.hpp"
 
-unsigned gen_legajo() {
-    srand(time(0));
-    return 1000 + rand() % 9000;
-}
 
-Alumno::Alumno(string new_name, unsigned new_legajo) : name(new_name), legajo(new_legajo) {}
-
-string Alumno::get_name() {
-    return name;
-}
-
-unsigned Alumno::get_legajo() {
-    return legajo;
-}
 
 Curso::Curso() : listado(vector<shared_ptr<Alumno>>()) {}
 
@@ -50,6 +37,18 @@ void Curso::DesinscribirAlumno(shared_ptr<Alumno> bad_alumno) {
     }
     cout << "Error -> El alumno no se encuentra en el curso" << endl;
 }
+void Curso::RegistrarResultado(shared_ptr<Alumno> alumno, unsigned nota_final){
+    unsigned legajo = alumno->get_legajo();
+    for (auto it = listado.begin(); it != listado.end(); ++it) {
+        if ((*it)->get_legajo() == legajo) {
+
+            // Antes de sacarlo, registro el resultado del curso
+            (*it)->add_course(name_curso, nota_final);
+            listado.erase(it);
+            return;
+        }
+    }
+}
 
 void Curso::alphabetical_print() {
     sort(listado.begin(), listado.end(), [](shared_ptr<Alumno> a, shared_ptr<Alumno> b) {
@@ -72,7 +71,11 @@ void Curso::print_size(){
     cout << "La cantida de alumnos en la clase es -> " << listado.size() << endl;
 }
 
-Curso Curso::Create_copy(){
+string Curso::get_name(){
+    return name_curso;
+}
+
+Curso Curso::Create_copy(){ //MAAAAAAL
     Curso new_curso = Curso();
     for (shared_ptr<Alumno> alumno : listado){
         new_curso.InscribirAlumno(alumno);
