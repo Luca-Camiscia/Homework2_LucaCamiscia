@@ -38,4 +38,18 @@ unsigned Alumno::get_promedio() {
     return total_sum/cursos_terminados.size();
     }  
 
+void Alumno::print_datos() {
+    cout << "Nombre: " << name << endl;
+    cout << "Legajo: " << legajo << endl;
+    cout << "Cursos terminados:" << endl;
 
+    if (cursos_terminados.empty()) {
+        cout << "  No tiene cursos terminados." << endl;
+    } else {
+        for (const auto& curso : cursos_terminados) {
+            cout << "  Curso: " << get<0>(curso) << ", Nota final: " << get<1>(curso) << endl;
+        }
+    }
+
+    cout << "Promedio: " << get_promedio() << endl;
+}

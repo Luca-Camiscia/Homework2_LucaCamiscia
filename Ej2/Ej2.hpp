@@ -24,6 +24,7 @@ public:
     unsigned get_legajo();
     void add_course(string course_name, unsigned final_note);
     unsigned get_promedio();
+    void print_datos();
 };
 
 class Curso {
@@ -41,11 +42,23 @@ public:
     void print_size();
     string get_name();
     Curso Create_copy();
+    shared_ptr<Alumno> find_alumno(unsigned legajo);
 };
+
+
+//Funciones menu
+
+shared_ptr<Alumno> buscar_alumno_por_legajo(vector<shared_ptr<Alumno>>* alumnos_vivos, unsigned legajo) ;
+shared_ptr<Curso> buscar_curso_por_nombre(vector<Curso> *cursos_disponibles, string name);
+
 
 void mostrar_cursos_disponibles(vector<Curso> cursos_disponibles);
 void mostrar_alumnos_vivos(vector<shared_ptr<Alumno>> alumnos_vivos);
 void menu(vector<Curso>*cursos_disponibles,vector<shared_ptr<Alumno>>*alumnos_vivos);
 void Crear_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos) ;
-
+void Mostrar_datos_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos);
+void mostrar_curso(vector<Curso> *cursos_disponibles) ;
+void InscribirAlumno(vector<shared_ptr<Alumno>>* alumnos_vivos, vector<Curso>*cursos_disponibles);
+void Desincribir_alumno(vector<Curso> *cursos_disponibles);
+void Crear_nuevo_curso(vector<Curso> *cursos_disponibles);
 

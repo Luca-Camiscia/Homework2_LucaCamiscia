@@ -15,13 +15,12 @@ bool Curso::legajo_exists(unsigned new_legajo) {
 
 void Curso::InscribirAlumno(shared_ptr<Alumno> new_alumno) {
     if (listado.size() >= MAX_CAPACITY) {
-        cout << "ERROR -> El curso ha alcanzado su capacidad máxima" << std::endl;
+        throw out_of_range("El curso ha alcanzado su capacidad máxima");
         return;
     }
 
     if (legajo_exists(new_alumno->get_legajo())) {
-        cout << "ERROR -> DOS LEGAJOS IGUALES: " << new_alumno->get_name()
-                  << " con legajo " << new_alumno->get_legajo() << std::endl;
+        throw invalid_argument("Ya existe un alumno con ese legajo");
         return;
     }
     listado.push_back(new_alumno);
@@ -80,4 +79,12 @@ Curso Curso::Create_copy(){ //MAAAAAAL
         new_curso.InscribirAlumno(alumno);
     } 
     return new_curso;
+}
+shared_ptr<Alumno> Curso::find_alumno(unsigned legajo) {
+    for (shared_ptr<Alumno> alumno : listado) {
+        if (alumno->get_legajo() == legajo) {
+            return alumno;
+        }
+    }
+    return nullptr; // Si no se encuentra, retorna nullptr
 }
