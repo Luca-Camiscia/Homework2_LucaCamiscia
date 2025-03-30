@@ -2,7 +2,7 @@
 
 
 
-Curso::Curso() : listado(vector<shared_ptr<Alumno>>()) {}
+Curso::Curso(string curso_name) : name_curso(curso_name), listado(vector<shared_ptr<Alumno>>()) {}
 
 bool Curso::legajo_exists(unsigned new_legajo) {
     for (shared_ptr<Alumno> alumno : listado) {
@@ -74,9 +74,8 @@ void Curso::print_size(){
 string Curso::get_name(){
     return name_curso;
 }
-
 Curso Curso::Create_copy(){ //MAAAAAAL
-    Curso new_curso = Curso();
+    Curso new_curso = Curso(name_curso);
     for (shared_ptr<Alumno> alumno : listado){
         new_curso.InscribirAlumno(alumno);
     } 

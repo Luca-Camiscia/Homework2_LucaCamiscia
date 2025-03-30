@@ -1,8 +1,8 @@
 #include "Ej2.hpp"
 
 
-Alumno::Alumno(string new_name, unsigned new_legajo) : name(new_name), legajo(new_legajo), cursos_terminados(vector<tuple<string, unsigned>>()) {}
-Alumno::Alumno(string new_name, unsigned new_legajo, vector<tuple<string,unsigned>> finished_cursos) : name(new_name), legajo(new_legajo), cursos_terminados(finished_cursos) {}
+Alumno::Alumno(string new_name, unsigned new_legajo) : name(new_name), legajo(new_legajo), cursos_terminados(vector<tuple<string, float>>()) {}
+Alumno::Alumno(string new_name, unsigned new_legajo, vector<tuple<string,float>> finished_cursos) : name(new_name), legajo(new_legajo), cursos_terminados(finished_cursos) {}
 
 string Alumno::get_name() {
     return name;

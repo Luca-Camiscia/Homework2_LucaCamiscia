@@ -9,7 +9,7 @@ int main (void){
     auto alumno7 = make_shared<Alumno>("Yoda", 1007);
     auto alumno8 = make_shared<Alumno>("Mace Windu", 1008);
 
-    Curso Star_Wars = Curso();
+    Curso Star_Wars = Curso("Star Wars");
     Star_Wars.InscribirAlumno(alumno1);
     Star_Wars.InscribirAlumno(alumno2);
     Star_Wars.InscribirAlumno(alumno3);
