@@ -1,4 +1,7 @@
 #include "Ej2.hpp"
+
+//ESTO ESTA HECHO CON MUCHO AMOR
+
 void mostrar_cursos_disponibles(vector<Curso> cursos_disponibles) {
     cout << "===== Cursos Disponibles =====" << endl;
     for (auto curso : cursos_disponibles) {
@@ -254,7 +257,7 @@ void Desincribir_alumno(vector<Curso> *cursos_disponibles) {
 }
 
 shared_ptr<Alumno> buscar_alumno_por_legajo(vector<shared_ptr<Alumno>>* alumnos_vivos, unsigned legajo) {
-    for (const auto& alumno : *alumnos_vivos) {
+    for (auto alumno : *alumnos_vivos) {
         if (alumno->get_legajo() == legajo) {
             return alumno; // Retorna el alumno encontrado
         }
@@ -262,10 +265,10 @@ shared_ptr<Alumno> buscar_alumno_por_legajo(vector<shared_ptr<Alumno>>* alumnos_
     return nullptr; // Retorna nullptr si no se encuentra el alumno
 }
 
-shared_ptr<Curso> buscar_curso_por_nombre(vector<Curso> *cursos_disponibles, string name) {
+Curso* buscar_curso_por_nombre(vector<Curso>* cursos_disponibles, string name) {
     for (auto& curso : *cursos_disponibles) {
         if (curso.get_name() == name) {
-            return make_shared<Curso>(curso); // Retorna un shared_ptr al curso encontrado
+            return &curso; // Retorna un puntero al curso
         }
     }
     return nullptr; // Retorna nullptr si no se encuentra el curso

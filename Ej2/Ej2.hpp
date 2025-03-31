@@ -49,7 +49,7 @@ public:
 //Funciones menu
 
 shared_ptr<Alumno> buscar_alumno_por_legajo(vector<shared_ptr<Alumno>>* alumnos_vivos, unsigned legajo) ;
-shared_ptr<Curso> buscar_curso_por_nombre(vector<Curso> *cursos_disponibles, string name);
+Curso* buscar_curso_por_nombre(vector<Curso>* cursos_disponibles, string name);
 
 
 void mostrar_cursos_disponibles(vector<Curso> cursos_disponibles);
