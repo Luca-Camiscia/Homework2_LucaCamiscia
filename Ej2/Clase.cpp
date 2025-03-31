@@ -73,8 +73,8 @@ void Curso::print_size(){
 string Curso::get_name(){
     return name_curso;
 }
-Curso Curso::Create_copy(){ //MAAAAAAL
-    Curso new_curso = Curso(name_curso);
+Curso Curso::Create_copy(string new_name){ //MAAAAAAL
+    Curso new_curso = Curso(new_name);
     for (shared_ptr<Alumno> alumno : listado){
         new_curso.InscribirAlumno(alumno);
     } 

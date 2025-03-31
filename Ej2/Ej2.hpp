@@ -41,7 +41,7 @@ public:
     void alphabetical_print();
     void print_size();
     string get_name();
-    Curso Create_copy();
+    Curso Create_copy(string new_name);
     shared_ptr<Alumno> find_alumno(unsigned legajo);
 };
 

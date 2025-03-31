@@ -286,8 +286,26 @@ void Crear_nuevo_curso(vector<Curso>*cursos_disponibles){
         cout << "Ya existe un curso con ese nombre. Intente otro" << endl;
         return;
     }
+    char choice;
+    cout << "Desea crearlo a paritr de los estudiantes de otro curso? (s/n)";
+    cin >> choice;
+    
+    Curso new_curso(name); 
 
-    Curso new_curso = Curso(name);
+    if (choice == 's' || choice == 'S') {
+        
+        string cursoBase;
+        cout << "Ingrese el nombre del curso de donde provienen los estudiantes" << endl;
+        cin >> cursoBase;
+
+        Curso* from_curso = buscar_curso_por_nombre(cursos_disponibles, cursoBase);
+
+        if (from_curso != nullptr) {
+            new_curso = from_curso->Create_copy(name);
+        } else {
+            cout << "No se encontró el curso base. Creando un curso vacío." << endl;
+        }
+    }
     cursos_disponibles->push_back(new_curso);
     cout << "Nuevo curso creado exitosamente" << endl;
     return;

@@ -29,7 +29,7 @@ int main(void){
     Curso analisis = Curso("Analisis");
     Curso algebra = Curso("Algebra");
     Curso historia = Curso("Historia");
-
+    Curso general = Curso("General"); //La idea de este es probar porque va a estar lleno
     //Inscribo los Alumnos iniciales a algunos cursos
 
     analisis.InscribirAlumno(alumno1);
@@ -52,11 +52,34 @@ int main(void){
     algebra.InscribirAlumno(alumno18);
     historia.InscribirAlumno(alumno19);
     analisis.InscribirAlumno(alumno20);
+
+    general.InscribirAlumno(alumno1);
+    general.InscribirAlumno(alumno2);
+    general.InscribirAlumno(alumno3);
+    general.InscribirAlumno(alumno4);
+    general.InscribirAlumno(alumno5);
+    general.InscribirAlumno(alumno6);
+    general.InscribirAlumno(alumno7);
+    general.InscribirAlumno(alumno8);
+    general.InscribirAlumno(alumno9);
+    general.InscribirAlumno(alumno10);
+    general.InscribirAlumno(alumno11);
+    general.InscribirAlumno(alumno12);
+    general.InscribirAlumno(alumno13);
+    general.InscribirAlumno(alumno14);
+    general.InscribirAlumno(alumno15);
+    general.InscribirAlumno(alumno16);
+    general.InscribirAlumno(alumno17);
+    general.InscribirAlumno(alumno18);
+    general.InscribirAlumno(alumno19);
+    general.InscribirAlumno(alumno20);
+
     // Agrego los cursos a un vector de cursos disponibles
     vector<Curso> cursos_disponibles;
     cursos_disponibles.push_back(analisis);
     cursos_disponibles.push_back(algebra);
     cursos_disponibles.push_back(historia);
+    cursos_disponibles.push_back(general);
     // Agrego a los alumno a un vector de alumnos existentes
     vector<shared_ptr<Alumno>> alumnos_vivos;
     alumnos_vivos.push_back(alumno1);
