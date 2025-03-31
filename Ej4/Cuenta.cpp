@@ -9,6 +9,13 @@ CuentaBase::CuentaBase(double initial_balance, string name)
     }
 }
 
+void CuentaBase::ingresar(double income) {
+    if (income < 0) {
+        throw invalid_argument("No se puede ingresar una cantidad negativa de dinero");
+    }
+    balance += income;
+}
+
 CajadeAhorro::CajadeAhorro(double initial_balance, string name) 
     : CuentaBase(initial_balance, name), ask_count(0) {}
 
@@ -28,12 +35,7 @@ void CajadeAhorro::mostrarinfo() {
     ask_count++;
 }
 
-void CajadeAhorro::ingresar(double income) {
-    if (income < 0) {
-        throw invalid_argument("No se puede ingresar una cantidad negativa de dinero");
-    }
-    balance += income;
-}
+
 
 void CajadeAhorro::retirar(double withdrawal) {
     if (withdrawal < 0) {
@@ -58,12 +60,7 @@ void CuentaCorriente::mostrarinfo() {
 void CuentaCorriente::mostrarinfo_caja(){
     caja.mostrarinfo();
 }
-void CuentaCorriente::ingresar(double income) {
-    if (income < 0) {
-        throw invalid_argument("No se puede ingresar una cantidad negativa de dinero");
-    }
-    balance += income;
-}
+
 
 void CuentaCorriente::ingresar_a_caja(double income) {
     caja.ingresar(income);
