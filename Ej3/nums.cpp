@@ -1,11 +1,7 @@
 #include "Ej3.hpp"
 
-class Entero {
-    private:
-    double num;
-
-    public:
-    Entero(double new_num) : num(new_num) {}
-
-    
-};
+Numero::Numero(string input_tag): tag(input_tag){
+    if(input_tag != "Entero" && input_tag != "Real" && input_tag != "Complejo"){
+        throw invalid_argument("Invalid tag provided");
+    }
+}

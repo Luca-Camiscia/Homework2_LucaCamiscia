@@ -5,10 +5,10 @@ using namespace std;
 
 class CuentaBase {
 protected:
-    string userId;
     double balance;
 
 private:
+    string userId;
 
 
 public:
@@ -16,13 +16,13 @@ public:
     virtual void ingresar(double income);
     virtual void retirar(double withdrawal) = 0;
     virtual void mostrarinfo() = 0;
-
+    string get_name();
 };
 
 class CajadeAhorro : public CuentaBase {
 private:
     unsigned ask_count;
-
+    
 public:
     CajadeAhorro(double initial_balance, string name);
     void retirar(double withdrawal) override;

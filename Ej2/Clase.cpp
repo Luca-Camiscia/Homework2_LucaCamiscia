@@ -73,14 +73,14 @@ void Curso::print_size(){
 string Curso::get_name(){
     return name_curso;
 }
-Curso Curso::Create_copy(string new_name){ //MAAAAAAL
+Curso Curso::Create_copy(string new_name){ 
     Curso new_curso = Curso(new_name);
     for (shared_ptr<Alumno> alumno : listado){
         new_curso.InscribirAlumno(alumno);
     } 
     return new_curso;
 }
-shared_ptr<Alumno> Curso::find_alumno(unsigned legajo) {
+shared_ptr<Alumno> Curso::find_alumno(unsigned legajo) { //Deep
     for (shared_ptr<Alumno> alumno : listado) {
         if (alumno->get_legajo() == legajo) {
             return alumno;

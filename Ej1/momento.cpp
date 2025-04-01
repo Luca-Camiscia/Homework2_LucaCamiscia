@@ -80,7 +80,10 @@ void momento::SetMorning(string new_mor) {
     if (new_mor != "a.m" && new_mor != "p.m") {
         throw invalid_argument("morning must be 'a.m' or 'p.m'");
     }
+    
     morning = new_mor;
+    
+    
 }
 
 void momento::print_24hour() {
