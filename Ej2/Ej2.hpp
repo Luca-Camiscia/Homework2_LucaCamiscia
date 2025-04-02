@@ -25,6 +25,7 @@ public:
     void add_course(string course_name, unsigned final_note);
     unsigned get_promedio();
     void print_datos();
+    bool operator<(const Alumno& other)const;
 };
 
 class Curso {

@@ -51,7 +51,7 @@ void Curso::RegistrarResultado(shared_ptr<Alumno> alumno, unsigned nota_final){
 
 void Curso::alphabetical_print() {
     sort(listado.begin(), listado.end(), [](shared_ptr<Alumno> a, shared_ptr<Alumno> b) {
-        return a->get_name() < b->get_name();
+        return *a < *b;
     });
 
     cout << "=============================" << endl;
@@ -73,14 +73,14 @@ void Curso::print_size(){
 string Curso::get_name(){
     return name_curso;
 }
-Curso Curso::Create_copy(string new_name){ 
+Curso Curso::Create_copy(string new_name){  //Deep
     Curso new_curso = Curso(new_name);
     for (shared_ptr<Alumno> alumno : listado){
         new_curso.InscribirAlumno(alumno);
     } 
     return new_curso;
 }
-shared_ptr<Alumno> Curso::find_alumno(unsigned legajo) { //Deep
+shared_ptr<Alumno> Curso::find_alumno(unsigned legajo) { 
     for (shared_ptr<Alumno> alumno : listado) {
         if (alumno->get_legajo() == legajo) {
             return alumno;

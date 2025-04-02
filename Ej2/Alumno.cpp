@@ -53,3 +53,7 @@ void Alumno::print_datos() {
 
     cout << "Promedio: " << get_promedio() << endl;
 }
+//funcion de sobrecarga
+bool Alumno::operator<(const Alumno& other)const{
+    return name < other.name;
+}
