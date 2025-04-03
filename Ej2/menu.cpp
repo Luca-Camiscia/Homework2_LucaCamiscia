@@ -94,7 +94,7 @@ void menu(vector<Curso>*cursos_disponibles,vector<shared_ptr<Alumno>>*alumnos_vi
 void Crear_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos) { 
     string name;
     cout << "Ingrese el nombre del alumno: " << endl;
-    cin >> name;
+    getline(cin >> ws, name);
     unsigned legajo;
     cout << "Ingrese el legajo del alumno: " << endl;
     cin >> legajo;
@@ -117,7 +117,7 @@ void Crear_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos) {
             float nota_final;
 
             cout << "Ingrese el nombre del curso (o 'fin' para terminar): ";
-            cin >> curso_nombre;
+            getline(cin >> ws, curso_nombre);
 
             if (curso_nombre == "fin") {
                 break;
@@ -166,7 +166,7 @@ void Mostrar_datos_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos) {
 void mostrar_curso(vector<Curso> *cursos_disponibles) {
     string name;
     cout << "Ingrese el nombre del curso que desea buscar: ";
-    cin >> name;
+    getline(cin >> ws, name);
     auto it = find_if(cursos_disponibles->begin(), cursos_disponibles->end(), [&name](Curso curso) {
         return curso.get_name() == name;
     });
@@ -188,7 +188,7 @@ void InscribirAlumno(vector<shared_ptr<Alumno>>* alumnos_vivos, vector<Curso>*cu
     string name_curso;
     cout << "Ingrese el nombre del curso donde quiere inscribir al alumno" << endl;
     mostrar_cursos_disponibles(*cursos_disponibles);
-    cin >> name_curso;
+    getline(cin >> ws, name_curso);
 
     auto curso_ptr = buscar_curso_por_nombre(cursos_disponibles, name_curso);
 
@@ -219,7 +219,7 @@ void InscribirAlumno(vector<shared_ptr<Alumno>>* alumnos_vivos, vector<Curso>*cu
 void Desincribir_alumno(vector<Curso> *cursos_disponibles) {
     string name_curso;
     cout << "Ingrese el nombre del curso donde se encuentra el alumno" << endl;
-    cin >> name_curso;
+    getline(cin >> ws, name_curso);
     unsigned legajo;
     char terminado;
     cout << "Ingrese el legajo de alumno que desea trabajar" << endl;
@@ -280,7 +280,7 @@ void Crear_nuevo_curso(vector<Curso>*cursos_disponibles){
 
     string name;
     cout << "Ingrese el nombre del nuevo curso" << endl;
-    cin >> name;
+    getline(cin >> ws, name);
     auto curso_existente = buscar_curso_por_nombre(cursos_disponibles, name);
     if (curso_existente != nullptr){
         cout << "Ya existe un curso con ese nombre. Intente otro" << endl;
