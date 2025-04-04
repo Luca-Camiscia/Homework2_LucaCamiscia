@@ -13,8 +13,8 @@ float Real::Get_as_Real() {
     return num;
 }
 
-complex<float> Real::Get_as_Complex() {
-    return static_cast<complex<float>>(num);
+tuple<float,float> Real::Get_as_Complex() {
+    return make_tuple(static_cast<float>(num), 0.0f);
 }
 
 void Real::suma(shared_ptr<class Numero> adding_num) {

@@ -24,8 +24,10 @@ public:
     unsigned get_legajo();
     void add_course(string course_name, unsigned final_note);
     unsigned get_promedio();
-    void print_datos();
-    bool operator<(const Alumno& other)const;
+    bool operator<(const Alumno& other) const;
+
+    friend ostream& operator<<(ostream& os, const Alumno& alumno);
+
 };
 
 class Curso {

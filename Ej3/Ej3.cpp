@@ -77,9 +77,9 @@ int main (void){
     cout << "=================================================================" << endl;
     cout << "==================== PRUEBAS SOLO CON COMPLEJOS =================" << endl;
 
-    shared_ptr<class Numero> I_ptr = make_shared<Complejo>(complex<float>(3.0, 4.0));
-    shared_ptr<class Numero> J_ptr = make_shared<Complejo>(complex<float>(1.0, 2.0));
-    shared_ptr<class Numero> K_ptr = make_shared<Complejo>(complex<float>(0.0, 0.0));
+    shared_ptr<class Numero> I_ptr = make_shared<Complejo>(3.0, 4.0);
+    shared_ptr<class Numero> J_ptr = make_shared<Complejo>(1.0, 2.0);
+    shared_ptr<class Numero> K_ptr = make_shared<Complejo>(0.0, 0.0);
 
     cout << "Imprimo I-> " << I_ptr->toString() << endl;
     cout << "Imprimo J-> " << J_ptr->toString() << endl;
@@ -116,7 +116,7 @@ int main (void){
 
     shared_ptr<class Numero> Entero_ptr = make_shared<Entero>(15);
     shared_ptr<class Numero> Real_ptr = make_shared<Real>(87.912);
-    shared_ptr<class Numero> Complex_ptr = make_shared<Complejo>(complex<float>(12.3, 652.9));
+    shared_ptr<class Numero> Complex_ptr = make_shared<Complejo>(12.3, 652.9);
 
     cout << "Imprimo Entero_ptr-> " << Entero_ptr->toString() << endl;
     cout << "Imprimo Real_ptr-> " << Real_ptr->toString() << endl;

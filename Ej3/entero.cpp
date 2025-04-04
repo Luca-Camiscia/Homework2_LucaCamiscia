@@ -12,8 +12,9 @@ float Entero::Get_as_Real(){
     return static_cast<float>(num); 
 }
 
-complex<float> Entero::Get_as_Complex(){
-    return static_cast<complex<float>>(num);
+tuple<float,float> Entero::Get_as_Complex(){
+
+    return make_tuple(static_cast<float>(num), 0.0f);
 }
 
 void Entero::suma(shared_ptr<class Numero> adding_num){

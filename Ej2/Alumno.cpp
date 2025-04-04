@@ -38,22 +38,32 @@ unsigned Alumno::get_promedio() {
     return total_sum/cursos_terminados.size();
     }  
 
-void Alumno::print_datos() {
-    cout << "Nombre: " << name << endl;
-    cout << "Legajo: " << legajo << endl;
-    cout << "Cursos terminados:" << endl;
 
-    if (cursos_terminados.empty()) {
-        cout << "  No tiene cursos terminados." << endl;
-    } else {
-        for (const auto& curso : cursos_terminados) {
-            cout << "  Curso: " << get<0>(curso) << ", Nota final: " << get<1>(curso) << endl;
-        }
-    }
-
-    cout << "Promedio: " << get_promedio() << endl;
-}
 //funcion de sobrecarga
 bool Alumno::operator<(const Alumno& other)const{
     return name < other.name;
 }
+
+ostream& operator<<(ostream& os, const Alumno& alumno){ 
+
+string cursos;
+if (alumno.cursos_terminados.empty()) {
+    cursos = "No tiene cursos terminados.";
+} else {
+    cursos = "";
+    for (const auto& curso : alumno.cursos_terminados) {
+        cursos = cursos + "Curso: " + get<0>(curso) + " Nota final: " + to_string(get<1>(curso)) + "\n";
+    }
+}
+
+string promedio = "Promedio: ";
+
+promedio = promedio + to_string(const_cast<Alumno&>(alumno).get_promedio());
+
+
+os << "Nombre: " << alumno.name << endl << "Legajo: " << alumno.legajo << endl  << cursos  << promedio << endl;
+
+return os;
+
+}
+ 

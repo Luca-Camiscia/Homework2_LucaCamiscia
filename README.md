@@ -1,67 +1,80 @@
-# Homework2_LucaCamiscia
+# Homework 2 - Luca Camiscia
+
 ## Tabla de Contenidos
 1. [Ejercicio 1](#ejercicio-1)
 2. [Ejercicio 2](#ejercicio-2)
 3. [Ejercicio 3](#ejercicio-3)
 4. [Ejercicio 4](#ejercicio-4)
 
+---
+
 ## Ejercicio 1
+
+### Descripción
+Este ejercicio implementa la clase `momento`, que representa un momento del día en formato de 12 horas (a.m./p.m.). La clase permite realizar diversas operaciones, como:
+- Crear instancias de momentos.
+- Imprimir datos en diferentes formatos.
+- Modificar atributos como hora, minutos, segundos y el indicador de tiempo (a.m./p.m.).
+- Validar datos ingresados por el usuario y manejar posibles errores.
+
 ### Archivos
-- Ej1.cpp 
-Este programa implementa la clase llamada `momento` que representa un momento del día en formato de 12 horas (a.m./p.m.) y permite realizar diversas operaciones sobre este.
+- **Ej1.cpp**: Programa principal que incluye ejemplos de uso de la clase `momento`.
+- **Ej1.hpp**: Archivo de encabezado con las definiciones de las funciones de la clase `momento`.
+- **momento.cpp**: Implementación de las funciones de la clase `momento`.
 
-El programa incluye ejemplos de uso de la clase `momento`, como la creación de instancias, la impresión de datos en diferentes formatos y la modificación de atributos como hora, minutos, segundos y el indicador de tiempo (a.m./p.m.). Además, permite al usuario ingresar un momento personalizado y valida los datos ingresados, manejando posibles errores.
-
--Ej1.hpp 
-Header con definiciones de funciones de la clase momento
--momento.cpp
-Contiene las funciones de el objeto momento.
+---
 
 ## Ejercicio 2
-Este ejercicio implementa un sistema de gestión de alumnos y clases siendo ambos objetos. Se puede afirmar que la relacion entre los objetos es de "Agregacion" ya que tal como en el ejemplo de la diaposiva 5 del sexto ppt, el "todo" (en este caso el curso) mantiene una relacion con las partes (alumnos) sin una dependencia total al sus ciclos de vida no depender del otro. Puedo tener un alumno que no este inscripto en ningun curso de la misma manera que puedo tener un curso vacio.  
+
+### Descripción
+Este ejercicio desarrolla un sistema de gestión de alumnos y clases, implementados como objetos. La relación entre los objetos es de "Agregación", ya que:
+- Un curso puede existir sin alumnos inscritos.
+- Un alumno puede no estar inscrito en ningún curso.
+
+El sistema incluye funcionalidades como:
+- Inscripción y desinscripción de alumnos.
+- Gestión de cursos llenos.
+- Actualización de cursos completados por los alumnos.
+
 ### Archivos
+1. **Alumno.cpp**: Implementación de la clase `Alumno`, que gestiona la información de los estudiantes.
+2. **Clase.cpp**: Implementación de la clase `Clase`, que representa un curso o materia.
+3. **Ej2.cpp**: Archivo principal que inicializa y ejecuta la lógica del sistema. Incluye un estado inicial con cursos y alumnos predefinidos.
+4. **Ej2.hpp**: Archivo de encabezado que declara las clases y funciones utilizadas.
+5. **menu.cpp**: Implementación del menú de usuario para interactuar con el programa.
+6. **makefile**: Archivo de configuración para compilar el proyecto con `make`.
 
-1. Alumno.cpp
-
-Este archivo define la implementación de la clase Alumno, que representa a un estudiante. Incluye métodos para gestionar la información del alumno y sus interacciones con las clases. 
-
-2. Clase.cpp
-
-Contiene la implementación de la clase Clase, que representa un curso o materia. Gestiona la inscripción de alumnos y otras funcionalidades relacionadas. 
-
-3. Ej2.cpp
-
-Archivo principal del programa, donde se inicializa y ejecuta la lógica del sistema. Contiene la función main y la interacción con los usuarios. Se ejecuta un estado inicial con varios cursos y alumnos ya inscriptos. El curso general comienza ya con 20 integrante para probar ya un curso lleno. A la hora de Desinscribir a un Alumno, de seleccionarse la opcion de que termino el curso se le podra modificar dentro del objeto Alumno para sumarle a sus cursos_completados el curso el cual termino.
-
-4. Ej2.hpp
-
-Encabezado que declara las clases y funciones utilizadas en Ej2.cpp y de los objetos Alumno y Curso.
-
-5. menu.cpp
-
-Implementa la funcionalidad del menú de usuario, permitiendo la navegación y selección de opciones en el programa.
-
-6. makefile
-
-Archivo de configuración para compilar el proyecto con make. Define las reglas de compilación y dependencias de los archivos fuente.
-
+---
 
 ## Ejercicio 3
-### Consigna
-Descripción del ejercicio 3.
+
+### Descripción
+Este ejercicio implementa un sistema de números que incluye las clases `complejo`, `entero` y `real`. Cada clase hereda de una clase base `Numero`. Los métodos de los objetos modifican sus valores directamente y no devuelven resultados.
 
 ### Archivos
-Lista de archivos relacionados con el ejercicio 3.
+- **complejo.cpp**: Implementación de la clase `complejo`.
+- **entero.cpp**: Implementación de la clase `entero`.
+- **real.cpp**: Implementación de la clase `real`.
+- **ej3.hpp**: Archivo de encabezado con las definiciones de todas las clases.
+- **ej3.cpp**: Archivo principal que realiza pruebas para verificar el funcionamiento de las clases.
+- **makefile**: Archivo de configuración para compilar el proyecto con `make`.
 
-### Implementación
-Explicación de la implementación del ejercicio 3.
+---
 
 ## Ejercicio 4
-### Consigna
-Descripción del ejercicio 4.
+
+### Descripción
+
+En el ejercicio se define una clase Abstracta CuentaBase de la cual derivan CajaAhorro y CuentaCorriente. CuentaAhorro puede ingresar y retirar dinero. CuentaCorriente es como cuentaAhorro pero ademas contiene CajadeAhorro la cual tiene metodos aparte para ingresar y retirar dinero. Cuando se intenta retirar dinero de una CuentaCorriente, de no tener suficiente intenta retirar de la CajaAhorroAsociada
+
+El programa incluye ejemplos para verificar el correcto funcionamiento del sistema.
 
 ### Archivos
-Lista de archivos relacionados con el ejercicio 4.
+- **CajaAhorro.cpp**: Implementación de la clase `CajaAhorro`.
+- **CuentaBase.cpp**: Implementación de la clase abstracta `CuentaBase`.
+- **CuentaCorriente.cpp**: Implementación de la clase `CuentaCorriente`.
+- **ej4.hpp**: Archivo de encabezado con las definiciones de las clases.
+- **ej4.cpp**: Archivo principal que crea e imprime ejemplos del sistema.
 
-### Implementación
-Explicación de la implementación del ejercicio 4.
+---
+

@@ -157,7 +157,7 @@ void Mostrar_datos_Alumno(vector<shared_ptr<Alumno>>* alumnos_vivos) {
 
     if (it != nullptr) {
         cout << "Alumno encontrado: " << it->get_name() << endl;
-        it->print_datos();
+        cout << *it;
     } else {
         cout << "No se encontró un alumno con el legajo: " << legajo << endl;
     }
