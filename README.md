@@ -1,77 +1,79 @@
-# Homework 2 - Luca Camiscia
+# Homework 2 – Luca Camiscia
 
 ## Tabla de Contenidos
 1. [Ejercicio 1](#ejercicio-1)
 2. [Ejercicio 2](#ejercicio-2)
 3. [Ejercicio 3](#ejercicio-3)
 4. [Ejercicio 4](#ejercicio-4)
+5. [Compilación y Ejecución](#compilación-y-ejecución)
 
 ---
 
 ## Ejercicio 1
 
 ### Descripción
-Este ejercicio implementa la clase `momento`, que representa un momento del día en formato de 12 horas (a.m./p.m.). La clase permite realizar diversas operaciones, como:
-- Crear instancias de momentos.
-- Imprimir datos en diferentes formatos.
-- Modificar atributos como hora, minutos, segundos y el indicador de tiempo (a.m./p.m.).
-- Validar datos ingresados por el usuario y manejar posibles errores.
+
+Este ejercicio consiste en la implementación de la clase `Momento`, la cual representa un instante del día utilizando el formato de 12 horas con indicación a.m./p.m. La clase permite realizar operaciones como:
+
+- Creación de instancias de momento.
+- Impresión de datos en distintos formatos.
+- Modificación de atributos individuales (hora, minutos, segundos, indicador a.m./p.m.).
+- Validación de datos ingresados por el usuario y manejo de errores.
 
 ### Archivos
-- **Ej1.cpp**: Programa principal que incluye ejemplos de uso de la clase `momento`.
-- **Ej1.hpp**: Archivo de encabezado con las definiciones de las funciones de la clase `momento`.
-- **momento.cpp**: Implementación de las funciones de la clase `momento`.
+
+- **Ej1.cpp**: Programa principal con ejemplos de uso de la clase `Momento`.
+- **Ej1.hpp**: Archivo de encabezado con las definiciones de la clase.
+- **momento.cpp**: Implementación de los métodos de la clase `Momento`.
 
 ---
 
 ## Ejercicio 2
 
 ### Descripción
-Este ejercicio desarrolla un sistema de gestión de alumnos y clases, implementados como objetos. La relación entre los objetos es de "Agregación", ya que:
-- Un curso puede existir sin alumnos inscritos.
-- Un alumno puede no estar inscrito en ningún curso.
 
-Tipo de Copia -> DEEP COPY
+Este ejercicio desarrolla un sistema de gestión de alumnos y clases, modelado mediante objetos. La relación entre los objetos es de tipo **Agregación**, ya que un curso puede existir sin alumnos y un alumno puede no estar inscrito en ningún curso.
 
-Cuando se hace un copia del curso se realiza una deep copy al solicitar nuevo espacio de memoria para almacenar en un nuevo vector perteniecente al nuevo curso los esutidiantes. Quiero que ambos vectores sean independientes ya que por mas que cree una copia de alumnos de un curso distinto, quiero poder inscribir alumnos a uno sin escribirlo a otro. A continuacion se muestra un ejemplo donde se intenta hacer una copia de un Curso con 2 estudiantes:
+Una de las consignas centrales del ejercicio es la correcta implementación de **deep copy** al copiar un curso. Esto significa que, al duplicar un curso, se crea un nuevo vector dinámico que contiene punteros a los mismos alumnos, pero en estructuras de memoria independientes. De esta manera, ambos cursos pueden modificarse sin afectar al otro.
 
-Quiero crear una copia de:
-CursoBase -> (&Maria, &Carla)
+**Ejemplo:**
 
-Uso la funcion copy y ahora tengo
-CursoNuevo ->(&Maria, &Carla)
+- CursoBase: → (&María, &Carla)  
+- CursoCopia (tras deep copy): → (&María, &Carla)
 
-Ahora tengo dos cursos distintos con vectores distintos pero con el mismo contenido. Se considera
-deep copy ya que es una copia profunda donde copio cada alemento dentro de Curso. Por mas que los punteros sean los mismos, dentro de la memoria se encuentran almacenados dos veces. En este ejemplo tengo un total de 4 punteros (2 a Maria y 2 a Carla). Esto tambien se ve reflejado cuando analizamos el estado de memoria antes y despues de crear una copia. Si tenemos un cursoBase que ocupa N y creo una copia, la copia tambien ocupa N. Uno podria interpretar que cuando llamo al metodo .Create_Copy() se realiza una copia superficial pero como esto es tan solo pero como lo que se esta analizando es la copia del Curso como un Todo y se crea un vector nuevo en lugar de referenciar al otro podemos afirmar que el tipo de copia es Deep. 
+Ambos cursos contienen punteros a los mismos objetos, pero almacenados en vectores distintos. Por lo tanto, el curso copiado es una réplica estructural completa, cumpliendo con los requisitos de una copia profunda.
 
+El sistema permite:
 
-El sistema incluye funcionalidades como:
-- Inscripción y desinscripción de alumnos.
-- Gestión de cursos llenos.
-- Actualización de cursos completados por los alumnos.
+- Inscripción y desinscripción de alumnos en cursos.
+- Gestión de cupos en cursos.
+- Actualización del historial de materias completadas por los alumnos.
 
 ### Archivos
-1. **Alumno.cpp**: Implementación de la clase `Alumno`, que gestiona la información de los estudiantes.
-2. **Clase.cpp**: Implementación de la clase `Clase`, que representa un curso o materia.
-3. **Ej2.cpp**: Archivo principal que inicializa y ejecuta la lógica del sistema. Incluye un estado inicial con cursos y alumnos predefinidos.
-4. **Ej2.hpp**: Archivo de encabezado que declara las clases y funciones utilizadas.
-5. **menu.cpp**: Implementación del menú de usuario para interactuar con el programa.
-6. **makefile**: Archivo de configuración para compilar el proyecto con `make`.
+
+1. **Alumno.cpp**: Implementación de la clase `Alumno`.
+2. **Clase.cpp**: Implementación de la clase `Clase`.
+3. **Ej2.cpp**: Archivo principal que inicializa y ejecuta la lógica del sistema, con instancias predefinidas.
+4. **Ej2.hpp**: Definiciones de clases y funciones.
+5. **menu.cpp**: Implementación de un menú interactivo para el usuario.
+6. **makefile**: Script para la compilación del programa mediante `make`.
 
 ---
 
 ## Ejercicio 3
 
 ### Descripción
-Este ejercicio implementa un sistema de números que incluye las clases `complejo`, `entero` y `real`. Cada clase hereda de una clase base `Numero`. Los métodos de los objetos modifican sus valores directamente y no devuelven resultados.
+
+Este ejercicio introduce una jerarquía de clases para modelar diferentes tipos de números: `Entero`, `Real` y `Complejo`. Todas las clases derivan de una clase base abstracta `Numero`. Cada objeto opera sobre sus propios datos sin devolver valores, siguiendo un enfoque orientado a objetos.
 
 ### Archivos
-- **complejo.cpp**: Implementación de la clase `complejo`.
-- **entero.cpp**: Implementación de la clase `entero`.
-- **real.cpp**: Implementación de la clase `real`.
-- **ej3.hpp**: Archivo de encabezado con las definiciones de todas las clases.
-- **ej3.cpp**: Archivo principal que realiza pruebas para verificar el funcionamiento de las clases.
-- **makefile**: Archivo de configuración para compilar el proyecto con `make`.
+
+- **complejo.cpp**: Implementación de la clase `Complejo`.
+- **entero.cpp**: Implementación de la clase `Entero`.
+- **real.cpp**: Implementación de la clase `Real`.
+- **ej3.hpp**: Definiciones de todas las clases utilizadas.
+- **ej3.cpp**: Archivo de pruebas para validar el funcionamiento del sistema.
+- **makefile**: Script de compilación.
 
 ---
 
@@ -79,16 +81,46 @@ Este ejercicio implementa un sistema de números que incluye las clases `complej
 
 ### Descripción
 
-En el ejercicio se define una clase Abstracta CuentaBase de la cual derivan CajaAhorro y CuentaCorriente. CuentaAhorro puede ingresar y retirar dinero. CuentaCorriente es como cuentaAhorro pero ademas contiene CajadeAhorro la cual tiene metodos aparte para ingresar y retirar dinero. Cuando se intenta retirar dinero de una CuentaCorriente, de no tener suficiente intenta retirar de la CajaAhorroAsociada
+Este ejercicio implementa un sistema bancario con una clase base abstracta `CuentaBase`, de la cual derivan `CajaAhorro` y `CuentaCorriente`.
 
-El programa incluye ejemplos para verificar el correcto funcionamiento del sistema.
+- `CajaAhorro` permite realizar operaciones básicas de depósito y extracción.
+- `CuentaCorriente` hereda de `CuentaBase` y asocia internamente una `CajaAhorro`. Si no dispone de fondos suficientes para un retiro, intenta completar la transacción utilizando el saldo disponible en su `CajaAhorro`.
+
+El diseño permite demostrar el uso de herencia, composición y comportamiento polimórfico.
 
 ### Archivos
+
 - **CajaAhorro.cpp**: Implementación de la clase `CajaAhorro`.
 - **CuentaBase.cpp**: Implementación de la clase abstracta `CuentaBase`.
 - **CuentaCorriente.cpp**: Implementación de la clase `CuentaCorriente`.
-- **ej4.hpp**: Archivo de encabezado con las definiciones de las clases.
-- **ej4.cpp**: Archivo principal que crea e imprime ejemplos del sistema.
+- **ej4.hpp**: Definiciones de las clases utilizadas.
+- **ej4.cpp**: Ejecución de casos de prueba.
+
+---
+
+## Compilación y Ejecución
+
+Para compilar y ejecutar cada ejercicio, utilizar el comando `make` correspondiente dentro del directorio del proyecto. Por ejemplo:
+
+```bash
+# Compilar y ejecutar Ejercicio 1
+make Ej1
+./Ej1
+
+# Compilar y ejecutar Ejercicio 2
+make Ej2
+./Ej2
+
+# Compilar y ejecutar Ejercicio 3
+make Ej3
+./Ej3
+
+# Compilar y ejecutar Ejercicio 4
+make Ej4
+./Ej4
+```
+
+> Nota: Se asume que el compilador `g++` y `make` están instalados en el entorno de desarrollo.
 
 ---
 
