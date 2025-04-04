@@ -42,7 +42,7 @@ Uso la funcion copy y ahora tengo
 CursoNuevo ->(&Maria, &Carla)
 
 Ahora tengo dos cursos distintos con vectores distintos pero con el mismo contenido. Se considera
-deep copy ya que es una copia profunda donde copio cada alemento dentro de Curso. Por mas que los punteros sean los mismos, dentro de la memoria se encuentran almacenados dos veces. En este ejemplo tengo un total de 4 punteros (2 a Maria y 2 a Carla). Esto tambien se ve reflejado cuando analizamos el estado de memoria antes y despues de crear una copia. Si tenemos un cursoBase que ocupa N y creo una copia, la copia tambien ocupa N.  
+deep copy ya que es una copia profunda donde copio cada alemento dentro de Curso. Por mas que los punteros sean los mismos, dentro de la memoria se encuentran almacenados dos veces. En este ejemplo tengo un total de 4 punteros (2 a Maria y 2 a Carla). Esto tambien se ve reflejado cuando analizamos el estado de memoria antes y despues de crear una copia. Si tenemos un cursoBase que ocupa N y creo una copia, la copia tambien ocupa N. Uno podria interpretar que cuando llamo al metodo .Create_Copy() se realiza una copia superficial pero como esto es tan solo pero como lo que se esta analizando es la copia del Curso como un Todo y se crea un vector nuevo en lugar de referenciar al otro podemos afirmar que el tipo de copia es Deep. 
 
 
 El sistema incluye funcionalidades como:
