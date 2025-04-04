@@ -31,6 +31,20 @@ Este ejercicio desarrolla un sistema de gestión de alumnos y clases, implementa
 - Un curso puede existir sin alumnos inscritos.
 - Un alumno puede no estar inscrito en ningún curso.
 
+Tipo de Copia -> DEEP COPY
+
+Cuando se hace un copia del curso se realiza una deep copy al solicitar nuevo espacio de memoria para almacenar en un nuevo vector perteniecente al nuevo curso los esutidiantes. Quiero que ambos vectores sean independientes ya que por mas que cree una copia de alumnos de un curso distinto, quiero poder inscribir alumnos a uno sin escribirlo a otro. A continuacion se muestra un ejemplo donde se intenta hacer una copia de un Curso con 2 estudiantes:
+
+Quiero crear una copia de:
+CursoBase -> (&Maria, &Carla)
+
+Uso la funcion copy y ahora tengo
+CursoNuevo ->(&Maria, &Carla)
+
+Ahora tengo dos cursos distintos con vectores distintos pero con el mismo contenido. Se considera
+deep copy ya que es una copia profunda donde copio cada alemento dentro de Curso. Por mas que los punteros sean los mismos, dentro de la memoria se encuentran almacenados dos veces. En este ejemplo tengo un total de 4 punteros (2 a Maria y 2 a Carla). Esto tambien se ve reflejado cuando analizamos el estado de memoria antes y despues de crear una copia. Si tenemos un cursoBase que ocupa N y creo una copia, la copia tambien ocupa N.  
+
+
 El sistema incluye funcionalidades como:
 - Inscripción y desinscripción de alumnos.
 - Gestión de cursos llenos.

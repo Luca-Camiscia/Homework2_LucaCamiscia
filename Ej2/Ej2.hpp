@@ -38,13 +38,14 @@ private:
 
 public:
     Curso(string curso_name);
+    Curso(string curso_name, Curso CursoBase);
     void InscribirAlumno(shared_ptr<Alumno> new_alumno);
     void DesinscribirAlumno(shared_ptr<Alumno> bad_alumno);
     void RegistrarResultado(shared_ptr<Alumno> good_alumno, unsigned nota_final); //Como desinscribir pero le agrega al objeto alumno el curso correspondiente
     void alphabetical_print();
     void print_size();
     string get_name();
-    Curso Create_copy(string new_name);
+    vector<shared_ptr<Alumno>>Create_copy();
     shared_ptr<Alumno> find_alumno(unsigned legajo);
 };
 

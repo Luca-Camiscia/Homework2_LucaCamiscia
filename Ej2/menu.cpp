@@ -301,7 +301,7 @@ void Crear_nuevo_curso(vector<Curso>*cursos_disponibles){
         Curso* from_curso = buscar_curso_por_nombre(cursos_disponibles, cursoBase);
 
         if (from_curso != nullptr) {
-            new_curso = from_curso->Create_copy(name);
+            new_curso = Curso(name, *from_curso);
         } else {
             cout << "No se encontró el curso base. Creando un curso vacío." << endl;
         }
