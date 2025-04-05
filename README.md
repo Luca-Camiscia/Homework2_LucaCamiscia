@@ -87,22 +87,28 @@ Este ejercicio implementa un sistema bancario con una clase base abstracta `Cuen
 - `CuentaCorriente` hereda de `CuentaBase` y asocia internamente una `CajaAhorro`. Si no dispone de fondos suficientes para un retiro, intenta completar la transacción utilizando el saldo disponible en su `CajaAhorro`.
 
 El diseño permite demostrar el uso de herencia, composición y comportamiento polimórfico.
+### Justificación de Elección de Tipos de Variables
 
-### Justificacion de eleccion de tipos de variables 
+- **`balance`** → `protected`:  
+    El balance se declara como `protected` ya que solo debe ser modificado por el usuario utilizando los métodos `ingresar()` y `retirar()`. Este nivel de acceso permite que las clases derivadas puedan modificarlo mediante sus propios métodos de ingreso y retiro.
 
-balance -> protected. El balance se usa protected ya que solo debe poder ser modificado por el usuario
-utilizando los metodos de ingresar() y retirar(). Se usa protected para que las clases derivadas puedan modificarlo con sus propios metodos de ingresar y retirar
+- **`userId`** → `private`:  
+    El identificador del usuario del banco se declara como `private` porque no debe ser modificado una vez asignado.
 
-userId -> private. El nombre del usuario del banco no tiene porque modificarse por lo que se utiliza 
-private.
+- **Constructores** → `public`:  
+    Los constructores se declaran como `public` para permitir que el usuario pueda crear instancias de las clases.
 
-Constructores -> public. Es necesario que el usuario pueda crear cosas.
+- **Métodos Públicos**:  
+    Los siguientes métodos se declaran como `public` ya que son utilizados directamente por el usuario para interactuar con el sistema:  
+    - `ingresar()`  
+    - `retirar()`  
+    - `ingresar_a_Caja()`  
+    - `retirar_de_Caja()`  
+    - `mostrarInfo()`  
+    - `mostrarInfoCaja()`
 
-Ingresar, Retirar, Ingresar_a_Caja,Retirar_de_Caja,mostrarinfo, mostrarinfoCaja-> Public. Son los 
-metodos que usa el usuario para utilizar el sistema.  
-
-Declaracion friend de CuentaCorriente en CajaAhorro-> Esto permite a una CuentaCorriende ver y modificar el balance de la cajaAhorro. De todas maneras el codigo siempre prioriza utilizar los metodos de la Caja
-para manejar mejor los errores y evitar codigo repetido pero en alguno caso especifico puede utilizarse.
+- **Declaración `friend` de `CuentaCorriente` en `CajaAhorro`**:  
+    Esto permite que una instancia de `CuentaCorriente` pueda acceder y modificar el balance de una `CajaAhorro`. Sin embargo, el código prioriza el uso de los métodos de la clase `CajaAhorro` para manejar errores de manera adecuada y evitar redundancia. En casos específicos, se puede acceder directamente al balance.
 
 ### Archivos
 
