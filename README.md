@@ -83,7 +83,7 @@ Este ejercicio introduce una jerarquía de clases para modelar diferentes tipos 
 
 Este ejercicio implementa un sistema bancario con una clase base abstracta `CuentaBase`, de la cual derivan `CajaAhorro` y `CuentaCorriente`.
 
-- `CajaAhorro` permite realizar operaciones básicas de depósito y extracción.
+- `CajaAhorro` hereda de `CuentaBase` permite realizar operaciones básicas de depósito y extracción.
 - `CuentaCorriente` hereda de `CuentaBase` y asocia internamente una `CajaAhorro`. Si no dispone de fondos suficientes para un retiro, intenta completar la transacción utilizando el saldo disponible en su `CajaAhorro`.
 
 El diseño permite demostrar el uso de herencia, composición y comportamiento polimórfico.
@@ -104,23 +104,10 @@ Para compilar y ejecutar cada ejercicio, utilizar el comando `make` correspondie
 
 ```bash
 # Compilar y ejecutar Ejercicio 1
-make Ej1
-./Ej1
-
+make E1
 # Compilar y ejecutar Ejercicio 2
-make Ej2
-./Ej2
-
+make E2
 # Compilar y ejecutar Ejercicio 3
 make Ej3
-./Ej3
-
 # Compilar y ejecutar Ejercicio 4
-make Ej4
-./Ej4
-```
-
-> Nota: Se asume que el compilador `g++` y `make` están instalados en el entorno de desarrollo.
-
----
-
+make E4

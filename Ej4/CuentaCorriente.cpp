@@ -25,6 +25,13 @@ void CuentaCorriente::retirar(double withdrawal) {
     }
     if (withdrawal > balance) {
         double remaining_with = withdrawal - balance;
+        //Con el try ya puedo ver si la cuentaAhorro no tiene dinero ya que tira un throw
+        //Si quiero tambien probar el funcionamiento de friend uso la siguiente linea
+        if(caja.balance < remaining_with){ 
+        //A pesar de que balance sea una variable protected, puedo acceder gracias a que CuentaCorriente es friend                                    
+            cout << "Saldo insuficiente" << endl;
+            return;
+        }
         try {
             caja.retirar(remaining_with);
         } catch (const out_of_range& e) {
