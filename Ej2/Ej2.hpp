@@ -34,7 +34,6 @@ class Curso {
 private:
     string name_curso;
     vector<shared_ptr<Alumno>> listado;
-    bool legajo_exists(unsigned new_legajo);
 
 public:
     Curso(string curso_name);
@@ -47,6 +46,8 @@ public:
     string get_name();
     vector<shared_ptr<Alumno>>Create_copy();
     shared_ptr<Alumno> find_alumno(unsigned legajo);
+    bool legajo_exists(unsigned new_legajo);
+
 };
 
 
@@ -65,4 +66,4 @@ void mostrar_curso(vector<Curso> *cursos_disponibles) ;
 void InscribirAlumno(vector<shared_ptr<Alumno>>* alumnos_vivos, vector<Curso>*cursos_disponibles);
 void Desincribir_alumno(vector<Curso> *cursos_disponibles);
 void Crear_nuevo_curso(vector<Curso> *cursos_disponibles);
-
+void Verificar_inscripcion(vector<Curso> *mostrar_cursos_disponibles);

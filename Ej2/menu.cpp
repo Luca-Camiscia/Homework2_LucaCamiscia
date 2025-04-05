@@ -32,17 +32,17 @@ void menu(vector<Curso>*cursos_disponibles,vector<shared_ptr<Alumno>>*alumnos_vi
         cout << "5. Inscribir un alumno" << endl;
         cout << "6. Desinscribir a un Alumno" << endl;
         cout << "7. Ver información de un alumno" << endl;
-        cout << "8. Crear un nuevo Curso" << endl;
-        cout << "9. Salir" << endl;
+        cout << "8. Verificar inscripcion a uncurso " << endl;
+        cout << "9. Crear un nuevo Curso" << endl;
+        cout << "10. Salir" << endl;
 
         cout << "Ingrese su opción: ";
-        if (cin >> choice && choice >= 1 && choice <= 9) {
-            if (choice == 9) {
+        if (cin >> choice && choice >= 1 && choice <= 10) {
+            if (choice == 10) {
                 cout << "Saliendo del sistema. ¡Hasta luego!" << endl;
-                break; // Salir del bucle si selecciona la opción 7
+                break; // Salir del bucle si selecciona la opción 10
             }
 
-            // Aquí puedes manejar la opción seleccionada
             cout << "Opción seleccionada: " << choice << endl;
 
             switch (choice)
@@ -73,7 +73,12 @@ void menu(vector<Curso>*cursos_disponibles,vector<shared_ptr<Alumno>>*alumnos_vi
                 break;
             
             case 8:
+                Verificar_inscripcion(cursos_disponibles);
+                break;
+            case 9:
                 Crear_nuevo_curso(cursos_disponibles);
+                break;
+                
 
             default:
                 cout << "Funcionalidad no implementada aún." << endl;
@@ -309,4 +314,28 @@ void Crear_nuevo_curso(vector<Curso>*cursos_disponibles){
     cursos_disponibles->push_back(new_curso);
     cout << "Nuevo curso creado exitosamente" << endl;
     return;
+}
+void Verificar_inscripcion(vector<Curso> *cursos_disponibles){
+    string name_curso;
+    cout <<"Ingrese el nombre del curso: " << endl;
+    getline(cin >> ws, name_curso);
+    unsigned legajo_cons;
+    cout <<"Ingrese el legajo del estudiante: " << endl;
+    cin >> legajo_cons;
+
+    Curso* ptr_curso = buscar_curso_por_nombre(cursos_disponibles, name_curso);
+    if (ptr_curso == nullptr){
+        cout <<"No se encontro el curso, por favor intente nuevamente" << endl;
+        return;
+    }
+    if (ptr_curso->legajo_exists(legajo_cons)){
+        cout << "El alumno se encuentra inscripto" << endl;
+        return;
+    }
+    else{
+        cout << "El alumno NO se encuentra inscripto" << endl;
+        return;
+    }
+
+
 }
