@@ -88,8 +88,10 @@ void momento::SetMorning(string new_mor) {
 
 void momento::print_24hour() {
     unsigned true_hour = hour;
-    if (morning == "p.m") {
+    if (morning == "p.m" && hour != 12) {
         true_hour += 12;
+    } else if (morning == "a.m" && hour == 12) {
+        true_hour = 0;
     }
     stringstream message;
     message << setfill('0') << setw(2) << true_hour << ":"
