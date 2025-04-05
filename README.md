@@ -88,6 +88,22 @@ Este ejercicio implementa un sistema bancario con una clase base abstracta `Cuen
 
 El diseño permite demostrar el uso de herencia, composición y comportamiento polimórfico.
 
+### Justificacion de eleccion de tipos de variables 
+
+balance -> protected. El balance se usa protected ya que solo debe poder ser modificado por el usuario
+utilizando los metodos de ingresar() y retirar(). Se usa protected para que las clases derivadas puedan modificarlo con sus propios metodos de ingresar y retirar
+
+userId -> private. El nombre del usuario del banco no tiene porque modificarse por lo que se utiliza 
+private.
+
+Constructores -> public. Es necesario que el usuario pueda crear cosas.
+
+Ingresar, Retirar, Ingresar_a_Caja,Retirar_de_Caja,mostrarinfo, mostrarinfoCaja-> Public. Son los 
+metodos que usa el usuario para utilizar el sistema.  
+
+Declaracion friend de CuentaCorriente en CajaAhorro-> Esto permite a una CuentaCorriende ver y modificar el balance de la cajaAhorro. De todas maneras el codigo siempre prioriza utilizar los metodos de la Caja
+para manejar mejor los errores y evitar codigo repetido pero en alguno caso especifico puede utilizarse.
+
 ### Archivos
 
 - **CajaAhorro.cpp**: Implementación de la clase `CajaAhorro`.

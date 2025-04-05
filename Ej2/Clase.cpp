@@ -4,7 +4,7 @@
 
 Curso::Curso(string curso_name) : name_curso(curso_name), listado(vector<shared_ptr<Alumno>>()) {}
 
-Curso::Curso(string curso_name, Curso CursoBase){
+Curso::Curso(string curso_name, Curso CursoBase){ //La justificacion del tipo de copia se encuentra en el README :)
     this->name_curso = curso_name;
     this->listado = CursoBase.Create_copy();
 }

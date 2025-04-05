@@ -16,7 +16,11 @@ void CuentaCorriente::mostrarinfo_caja(){
 
 
 void CuentaCorriente::ingresar_a_caja(double income) {
-    caja.ingresar(income);
+    try {
+        caja.ingresar(income);
+    } catch (const invalid_argument& e) {
+        cout << "Ingreso no válido: " << e.what() << endl;
+    }
 }
 
 void CuentaCorriente::retirar(double withdrawal) {
@@ -44,7 +48,7 @@ void CuentaCorriente::retirar(double withdrawal) {
 }
 void CuentaCorriente::retirar_de_caja(double income){
     try{
-        caja.ingresar(income);
+        caja.retirar(income);
     }
     catch(const invalid_argument& e){
         cout << "Ingreso no valido" << endl;
